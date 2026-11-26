@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Welcome_St.Cassini</title>
+<style>
+  /* ---------- 字体：取自 Shopify Editions · Fall '26 官网所用的字体 ---------- */
+  @font-face {
+    font-family: "GT Standard L";
+    src: url("fonts/gt-standard-l-semibold.woff2") format("woff2");
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "GT Standard M";
+    src: url("fonts/gt-standard-m-regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Inter";
+    src: url("fonts/inter-var.woff2") format("woff2");
+    font-weight: 400 600;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "JetBrains Mono";
+    src: url("fonts/jetbrains-mono-medium.woff2") format("woff2");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Geist Mono";
+    src: url("fonts/geist-mono-regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  /* ---------- 基础 ---------- */
+  /* 想改回黑色无衬线标题：把 --title-font 换成 Inter 即可 */
+  :root {
+    --title-font: "GT Standard L", "GT Standard M", "Inter", "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+    --label-font: "Inter", "GT Standard M", "Helvetica Neue", Arial, "PingFang SC", sans-serif;
+    --mono-font: "Geist Mono", "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    color-scheme: dark;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; overflow: hidden; }
+
+  body {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(ellipse 120% 90% at 50% 42%, #1a64e6 0%, #0d47c4 38%, #062a86 70%, #02123f 100%);
+    font-family: var(--label-font);
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* 极淡光晕，给纯色蓝一点空间感 */
+  body::before,
+  body::after {
+    content: "";
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(90px);
+  }
+  body::before {
+    width: 70vmax; height: 70vmax;
+    left: -22vmax; top: -28vmax;
+    background: radial-gradient(circle, rgba(90,160,255,.35), transparent 68%);
+  }
+  body::after {
+    width: 60vmax; height: 60vmax;
+    right: -20vmax; bottom: -26vmax;
+    background: radial-gradient(circle, rgba(0,220,220,.20), transparent 68%);
+  }
+
+  /* ---------- 中间大字 ---------- */
+  .stage {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 6vmin;
+  }
+
+  h1 {
+    font-family: var(--title-font);
+    font-weight: 600;
+    /* GT Standard 小字号下整体偏小，放大一档补回来 */
+    font-size: clamp(28px, 7vw, 146px);
+    line-height: 1.04;
+    letter-spacing: -0.015em;
+    color: #ffffff;
+    text-align: center;
+    white-space: nowrap;
+    text-shadow:
+      0 0 2px rgba(255,255,255,.55),
+      0 0 28px rgba(150,205,255,.35),
+      0 6px 48px rgba(0,0,0,.35);
+    animation: appear 1.6s cubic-bezier(.16, 1, .3, 1) both;
+  }
+
+  /* 窄屏允许换行，避免超出 */
+  @media (max-width: 900px) {
+    h1 { white-space: normal; max-width: 92vw; }
+  }
+
+  @keyframes appear {
+    from { opacity: 0; transform: translateY(14px) scale(.985); filter: blur(6px); }
+    to   { opacity: 1; transform: none; filter: blur(0); }
+  }
+
+  /* ---------- 底部日期 ---------- */
+  .footer {
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: clamp(24px, 5vh, 56px);
+    transform: translateX(-50%);
+    font-family: var(--mono-font);
+    font-weight: 400;
+    font-size: clamp(11px, 1.05vw, 14px);
+    letter-spacing: 0.16em;
+    color: rgba(255, 255, 255, .78);
+    white-space: nowrap;
+    user-select: none;
+    animation: appear 1.6s cubic-bezier(.16, 1, .3, 1) .45s both;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    h1, .footer { animation: none; }
+  }
+</style>
+</head>
+<body>
+  <main class="stage">
+    <h1>Welcome_St.Cassini</h1>
+  </main>
+  <footer class="footer">2026/11/26</footer>
+</body>
+</html>
